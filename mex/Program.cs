@@ -1,15 +1,21 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
 
 namespace mex
 {
     class Program
     {
+
         static void Main(string[] args)
         {
+            uint seed = 10;
+
             var mex = new MexDB();
 
             var key = "";
-            uint seed = 0;
+            //uint seed = 0;
 
             Console.WriteLine("Новый ID (Enter)");
             Console.WriteLine("Зашифровать базу (цифра)");
@@ -18,7 +24,9 @@ namespace mex
             while (true)
             {
                 Console.WriteLine("Список ID:");
-                Console.WriteLine(string.Join(", ", mex.cache));
+                Console.WriteLine(string.Join(", ", mex.sorted.Select(c => c.ToString("D3"))));
+                //Console.WriteLine(string.Join(", ", arr.Select(c => c.ToString("D3"))));
+                //Console.WriteLine(string.Join(", ", arr.Select(c => Convert.ToString(c, 2).PadLeft(4, '0'))));
 
                 key = Console.ReadLine();
                 if (key == "exit")
